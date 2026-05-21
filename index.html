@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KJ TRAINERS — Grail Footwear, Authenticated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,800;0,900;1,800;1,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css?v=4">
+</head>
+<body>
+  <canvas class="bg-canvas" id="bg-canvas" aria-hidden="true"></canvas>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>LV Trainer Monogram</span><span class="sep">//</span>
+        <span>Pay with Apple Pay</span><span class="sep">//</span>
+        <span>Authenticated by hand</span><span class="sep">//</span>
+        <span>Shipped worldwide</span><span class="sep">//</span>
+      </div>
+      <div class="ticker-group">
+        <span>LV Trainer Monogram</span><span class="sep">//</span>
+        <span>Pay with Apple Pay</span><span class="sep">//</span>
+        <span>Authenticated by hand</span><span class="sep">//</span>
+        <span>Shipped worldwide</span><span class="sep">//</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="kjheader">
+    <div class="kjheader-inner">
+      <a class="brand" href="index.html">KJ&nbsp;Trainers<span class="dot">.</span></a>
+      <div class="kjheader-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/>
+          </svg>
+        </button>
+        <a class="cart-link" href="cart.html">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8h12l-1.2 12.5H7.2L6 8z"/><path d="M9 8.5V6a3 3 0 0 1 6 0v2.5"/>
+          </svg>
+          <span>Cart (<span data-cart-count>0</span>)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-meta" data-reveal>Vol.07 / SS26 &mdash; Issued February 2026</p>
+        <h1 class="hero-headline" data-reveal>Made<br><em>To</em> Walk.<br>Built<br><span class="accent">To Drop.</span></h1>
+        <p class="hero-lede" data-reveal>A tightly curated index of grail footwear from Jordan, Dior and Louis Vuitton. Authenticated by hand. Shipped worldwide. Paid in a single tap with Apple Pay.</p>
+        <div class="hero-actions" data-reveal>
+          <a class="btn" href="shop.html">Shop the index <span class="arrow">&rarr;</span></a>
+          <a class="ulink" href="shop.html">The Jordan Archive</a>
+        </div>
+      </div>
+      <figure class="hero-figure" data-reveal>
+        <img src="images/black-worn.jpg" alt="KJ Trainers — worn on foot">
+      </figure>
+    </section>
+
+    <section class="index">
+      <div class="index-head">
+        <h2 data-reveal>The Index</h2>
+        <span class="mono" data-reveal>06 Styles / In Stock</span>
+      </div>
+      <div class="grid" data-grid></div>
+    </section>
+  </main>
+
+  <footer class="kjfooter">
+    <div class="kjfooter-top">
+      <div class="kjfooter-brand">KJ Trainers<span class="dot">.</span></div>
+      <div class="kjfooter-cols">
+        <div class="fcol">
+          <h4>Index</h4>
+          <a href="shop.html">All styles</a>
+          <a href="shop.html">New drops</a>
+          <a href="cart.html">Cart</a>
+        </div>
+        <div class="fcol">
+          <h4>Service</h4>
+          <a href="#">Authentication</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+        </div>
+        <div class="fcol">
+          <h4>Contact</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="kjfooter-bottom">
+      <span>&copy; MMXXVI KJ Trainers</span>
+      <span>Authenticated &middot; Shipped Worldwide</span>
+      <span>Secure payments &mdash; Apple Pay &amp; Card</span>
+    </div>
+  </footer>
+
+  <script src="js/products.js?v=5"></script>
+  <script src="js/ui.js?v=5"></script>
+  <script src="js/reveal.js?v=5"></script>
+  <script src="js/animation.js?v=10"></script>
+  <script>
+    (function () {
+      function card(p, i) {
+        var idx = String(i + 1).padStart(3, '0');
+        var n = p.colors.length;
+        return '<a class="card" href="product.html?id=' + p.id + '" data-reveal>' +
+          '<div class="card-frame">' + mainVisual(p) + '</div>' +
+          '<div class="card-meta"><span>' + idx + '</span>' +
+          '<span>' + n + ' Colour' + (n > 1 ? 's' : '') + '</span></div>' +
+          '<div class="card-row"><span class="card-name">' + p.name + '</span>' +
+          '<span class="card-price">' + money(p.price) + '</span></div>' +
+        '</a>';
+      }
+      document.querySelector('[data-grid]').innerHTML =
+        PRODUCTS.map(function (p, i) { return card(p, i); }).join('');
+      if (window.revealScan) window.revealScan();
+    })();
+  </script>
+</body>
+</html>
